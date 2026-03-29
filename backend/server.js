@@ -13,7 +13,9 @@ app.use((req, res, next) => {
     next();
 });
 //app.use('/api/v1', require('./routes/userRoutes'));
-app.use('/api/v1', require('./routes/userRoutes'));
+//app.use('/api/v1', require('./routes/userRoutes'));app.use('/test', require('./routes/userRoutes'));
+app.use('/test', require('./routes/userRoutes'));
+
 
 // MongoDB Connection
 // Humne process.env.MONGO_URI is liye likha hai taake ye .env file se link uthaye
