@@ -8,6 +8,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use('/api/v1', require('./routes/userRoutes'));
 
 // MongoDB Connection
 // Humne process.env.MONGO_URI is liye likha hai taake ye .env file se link uthaye
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.use('/api/v1', require('./routes/userRoutes'));
+//app.use('/api/v1', require('./routes/userRoutes'));
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
 });
