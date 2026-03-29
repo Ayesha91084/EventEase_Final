@@ -8,6 +8,11 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use((req, res, next) => {
+    console.log(`${req.method} request incoming to: ${req.url}`);
+    next();
+});
+//app.use('/api/v1', require('./routes/userRoutes'));
 app.use('/api/v1', require('./routes/userRoutes'));
 
 // MongoDB Connection
