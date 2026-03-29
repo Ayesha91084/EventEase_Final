@@ -15,6 +15,9 @@ app.get('/api/v1/test', (req, res) => {
 });
 
 // --- REAL ROUTES ---
+app.get('/check', (req, res) => {
+    res.send("Working!");
+});
 app.use('/api/v1', require('./routes/userRoutes'));
 
 // MongoDB Connection
