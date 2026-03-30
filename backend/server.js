@@ -1,34 +1,32 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config({ path: './.env' });
+require('dotenv').config();
 
 const app = express();
 
-// Middleware
+// Middlewares
 app.use(express.json());
 app.use(cors());
 
-// MongoDB Connection
-// Humne process.env.MONGO_URI is liye likha hai taake ye .env file se link uthaye
-
-//console.log("My Link is:"mongodb+srv://ayehsabibi828_db_user:085656@..@cluster0.zadenzr.mongodb.net/?appName=Cluster0");
-
-//const password = encodeURIComponent(ayesha2026); 
-//const uri = `mongodb+srv://ayehsabibi828_db_user:${password}@cluster0.zadenzr.mongodb.net/EventEaseDB?retryWrites=true&w=majority`;
-// Agar naya password 'ayesha2026' rakha hai to link aisi hogi:
-const uri = "mongodb+srv://ayehsabibi828_db_user:ayesha2026@cluster0.zadenzr.mongodb.net/EventEaseDB?retryWrites=true&w=majority";
-mongoose.connect(uri)
-
-  .then(() => console.log("✅ MongoDB Connected Successfully!"))
-  .catch((err) => console.log("❌ MongoDB Connection Error:", err));
-
-// Test Route (Sirf check karne ke liye ke server chal raha hai)
-app.get('/', (req, res) => {
-    res.send("EventEase Backend is Running!");
+// --- TEST ROUTE (Sirf check karne ke liye) ---
+app.get('/api/v1/test', (req, res) => {
+    res.status(200).json({ message: "Backend is working!" });
 });
 
-const PORT = process.env.PORT || 5000;
+// --- REAL ROUTES ---
+app.get('/check', (req, res) => {
+    res.send("Working!");
+});
+app.use('/api/v1', require('./routes/userRoutes'));
+
+// MongoDB Connection
+const uri = "mongodb+srv://ayehsabibi828_db_user:ayesha2026@cluster0.zadenzr.mongodb.net/EventEaseDB?retryWrites=true&w=majority";
+mongoose.connect(uri)
+  .then(() => console.log("✅ MongoDB Connected Successfully!"))
+  .catch((err) => console.log("❌ MongoDB Error:", err));
+
+const PORT = 5000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on port ${PORT}`);
+    console.log(`🚀 Server started on port ${PORT}`);
 });
