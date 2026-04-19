@@ -1,7 +1,7 @@
 # EventEase - Event Management System
 
 ## Project Overview
-EventEase aik MERN stack web application hai jo Mandi Bahauddin ke local vendors, venues, aur customers ko aapas mein connect karti hai. Is project ka maqsad event planning ko asaan aur digital banana hai.
+EventEase is a web app that provide platform to vendors for create account after vendor approval list their services chat with customer accept and reject bookings receive payment by using stripe payment gateway integration customers can review by using 5 stars rating after event complete.
 
 ## Tech Stack
 - **Frontend:** React.js
@@ -18,5 +18,4 @@ EventEase aik MERN stack web application hai jo Mandi Bahauddin ke local vendors
 
 ## Team Members
 - Ayesha (Lead Developer)
-- Mahroosh
 - Asma
